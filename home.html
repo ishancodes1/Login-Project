@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li>Home</li>
+      <li>Contact</li>
+      <li>Gallery</li>
+    </ul>
+  </nav>
+  <section class="hero-section">
+    <h1 id="nameBar"></h1>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <button id="logoutBtn" onclick="logout()">Logout</button>
+  </section>
+  <script>
+    if (localStorage.getItem("isLoggedIn") == false){
+      window.location.href = "login.html";
+    }
+    nameBar = document.getElementById("nameBar");
+    nameBar.innerText = "Welcome, " + localStorage.getItem("userName") + "!";
+    function logout(){
+      localStorage.setItem("isLoggedIn", false);
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

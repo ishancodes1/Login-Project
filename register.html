@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+</head>
+<body>
+  <h1>Register</h1>
+  <form id="registrationForm" onsubmit="register(event)">
+    <label for="name">Enter Your Name:</label><br>
+    <input type="text" id="name" required><br>
+    <label for="email">Enter Your Email:</label><br>
+    <input type="email" id="email" required><br>
+    <label for="password">Enter a Password:</label><br>
+    <input type="password" id="password" required><br>
+    <label for="confirmPassword">Confirm Password:</label><br>
+    <input type="password" id="confirmPassword" required><br><br>
+    <button type="submit">Register</button>
+  </form>
+  <script>
+    function register(event){
+      event.preventDefault();
+      name = document.getElementById("name").value;
+      email = document.getElementById("email").value;
+      password = document.getElementById("password").value;
+      confirmPassword = document.getElementById("confirmPassword").value;
+      if (password == confirmPassword){
+        localStorage.setItem("userName", name);
+        localStorage.setItem("userEmail", email);
+        localStorage.setItem("userPassword", password);
+        window.location.href = "login.html";
+      }
+      else{
+        window.alert("Confirm Password & Password Don't Match");
+      }     
+    }
+  </script>
+</body>
+</html>

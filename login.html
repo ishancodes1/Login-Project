@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Login</h1>
+  <form id="loginForm" onsubmit="login(event)">
+    <label for="email">Enter Your Email:</label><br>
+    <input type="email" id="email" required><br>
+    <label for="password">Enter Your Password:</label><br>
+    <input type="password" id="password" required><br>
+    <button type="submit">Login</button>
+    <button onclick="register()">Haven't Registred?</button>
+  </form>
+  <script>
+    function login(event){
+      event.preventDefault();
+      enteredEmail = document.getElementById("email").value;
+      enteredPassword = document.getElementById("password").value;
+      storedEmail = localStorage.getItem("userEmail");
+      storedPassword = localStorage.getItem("userPassword");
+      if (enteredEmail == storedEmail && enteredPassword == storedPassword){
+        localStorage.setItem("isLoggedIn", true);
+        window.location.href = "home.html";
+      }
+      else{
+        window.alert("Wrong Email Or Password, If not registered, click register button");
+      }
+    }
+    function register(){
+      window.location.href = "register.html";
+    }
+  </script>
+</body>
+</html>
